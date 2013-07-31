@@ -90,7 +90,7 @@ header h2 {
 }
 
 .inner {
-  width: 620px;
+  width: 990px;
   margin: 0 auto;
 }
 
@@ -206,6 +206,7 @@ hr {
   padding-bottom: 1em;
   border: none;
   background: transparent url('../images/hr.png') 50% 0 no-repeat;
+  background-position-x: center;
 }
 
 strong {
@@ -310,6 +311,7 @@ dl dt {
 
 footer {
   background: transparent url('../images/hr.png') 0 0 no-repeat;
+  background-position-x: center;
   margin-top: 40px;
   padding-top: 20px;
   padding-bottom: 30px;

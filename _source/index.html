@@ -1,0 +1,20 @@
+---
+layout: base
+title: index
+---
+<header>
+	<h1>Joseph's Blog</h1>
+</header>
+
+<section id="main_content">
+	<h4>Index</h4>
+	<ul>
+	  {% for post in site.posts %}
+		<li>
+		  <span class="date">{{ post.date | date: "%B %e, %Y" }}</span>
+		  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+		  {{ post.excerpt | markdownify }}
+		</li>
+	  {% endfor %}
+	</ul>
+</section>
