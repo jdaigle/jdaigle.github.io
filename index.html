@@ -1,20 +1,29 @@
 ---
-layout: base
-title: index
+layout: default
 ---
-<header>
-	<h1>Joseph's Blog</h1>
-</header>
 
-<section>
-	<h4>Index</h4>
-	<ul>
-	  {% for post in site.posts %}
-		<li>
-		  <span class="date">{{ post.date | date: "%B %e, %Y" }}</span>
-		  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-		  {{ post.excerpt | markdownify }}
-		</li>
-	  {% endfor %}
-	</ul>
+<section class="main-content">
+
+    {% for post in paginator.posts %}
+        <article class="module color-3">
+                <h2><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+                <span class="date">{{ post.date | date: "%B %e, %Y"  }}</span>
+                <p>{{ post.excerpt | strip_html | truncate: 250 }}</p>
+        </article>
+    {% endfor %}
+
+    <div class="module pagination color-3">
+        {% if paginator.previous_page %}
+            <a href="{{ site.url }}{{ paginator.previous_page_path }}" class="previous">Previous</a>
+        {% endif %}
+
+        <span class="page_number">&mdash; {{ paginator.page }} of {{ paginator.total_pages }} &mdash;</span>
+
+        {% if paginator.next_page %}
+            <a href="{{ site.url }}{{ paginator.next_page_path }}" class="next">Next</a>
+        {% endif %}
+    </div>
+
 </section>
+
+
