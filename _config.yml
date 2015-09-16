@@ -1,7 +1,6 @@
 # General
 name: "Joseph's Blog"
 description: "Joseph's Blog"
-url: http://localhost:4000
 paginate: 5
 
 markdown: redcarpet
