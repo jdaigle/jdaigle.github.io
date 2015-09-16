@@ -1,6 +1,5 @@
 # General
-name: "Joseph's Blog"
-description: "Joseph's Blog"
+name: "while (e_coyote) {"
 paginate: 5
 
 markdown: redcarpet
