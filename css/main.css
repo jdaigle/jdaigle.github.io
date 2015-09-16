@@ -113,7 +113,7 @@ article p a {
     font-weight: 300;
     line-height: 1.7;
     text-align: center;
-    width: 35%;
+    width: 25%;
 }
 
     .main-header h1 {
@@ -145,7 +145,7 @@ article p a {
 .main-content {
     float: right;
     padding: 0;
-    width: 65%;
+    width: 75%;
 }
 
     .main-content a { color: #2c3e50; }
@@ -172,7 +172,7 @@ hr {
     color: #212121;
     margin: 0.5em;
     overflow: hidden;
-    padding: 1.5em;
+    padding: 0.5em;
     position: relative;
 }
 
@@ -329,18 +329,26 @@ table {
 -  Make things responsive. -
 -------------------------------------------------------------------------*/
 
-@media (max-width: 850px) {
+@media (max-width: 940px) {
 
     body { font-size: large; }
 
-    .main-header,
+    .main-header {
+        padding: 0.75em;
+    }
+    
     .main-content {
         padding: 0.75em;
-        width: 100%;
     }
 
-    .main-header .module { margin-left: 0; }
-    .main-content .module { margin-top: 0; }
+    .main-header,
+    .main-content {
+        width: 100%;
+        padding-top: 0;
+    }
+
+    .main-header .module { margin-left: 0; padding: 0; }
+    .main-content .module { margin-top: 0; margin-left: 0; margin-right: .5em; }
 
     nav { text-align: center; }
     nav br { display: none; }
