@@ -2,25 +2,17 @@
 layout: default
 ---
 
-<div class="main-content">
-
-    <article class="module color-3">
-        <h1>{{ page.title }}{{ .shortUrl }}</h1>
-        <span class="date">{{ page.date | date: "%B %e, %Y"  }}</span>
-        <span class="previous_next_articles">
-          {% if page.previous.url %} 
-            <a href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}" style="float:left;">&laquo; {{page.previous.title}}</a> 
-          {% endif %}
-          {% if page.next.url %} 
-            <a href="{{page.next.url}}" title="Next Post: {{page.next.title}}" style="float:right;">{{page.next.title}}&raquo; </a> 
-          {% endif %} 
-        </span>
-        <hr>
-        {{ content }}
-        <p class="top"><small><a href="#top">[top]</a></small></p>
-    </article>
-
-</div>
-
-
-
+<article>
+    <span class="previous_next_articles">
+      {% if page.previous.url %} 
+        <a href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}" style="float:left;">&laquo; {{page.previous.title}}</a> 
+      {% endif %}
+      {% if page.next.url %} 
+        <a href="{{page.next.url}}" title="Next Post: {{page.next.title}}" style="float:right;">{{page.next.title}} &raquo;</a> 
+      {% endif %} 
+    </span>
+    <hr style="clear:both;">
+    <h2>{{ page.title }}{{ .shortUrl }}</h2>
+    <span class="date">{{ page.date | date: "%B %e, %Y"  }}</span>
+    {{ content }}
+</article>
