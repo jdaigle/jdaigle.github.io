@@ -8,3 +8,16 @@ body {
 }
 
 h1,h2,h3 { line-height:1.2 }
+
+pre {
+    background-color: #eee;
+    padding: 5px;
+    border: 1px solid #aaa;
+    font-size: 14px;
+}
+
+p code {
+    background-color: #eee;
+    font-size: 14px;
+    padding: 1px;
+}

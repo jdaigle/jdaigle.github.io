@@ -11,7 +11,7 @@ layout: default
         <a href="{{page.next.url}}" title="Next Post: {{page.next.title}}" style="float:right;">{{page.next.title}} &raquo;</a> 
       {% endif %} 
     </span>
-    <hr style="clear:both;">
+    <div style="clear:both; height: 0; margin: 0; padding: 0;"></div>
     <h2>{{ page.title }}{{ .shortUrl }}</h2>
     <span class="date">{{ page.date | date: "%B %e, %Y"  }}</span>
     {{ content }}
