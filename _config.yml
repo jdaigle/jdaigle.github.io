@@ -3,7 +3,7 @@ name: "while (e_coyote) {"
 paginate: 5
 
 markdown: redcarpet
-highlighter: null
+highlighter: pygments
 
 # RSS feed
 rss-feed-limit: 10
