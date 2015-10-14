@@ -21,3 +21,7 @@ p code {
     font-size: 14px;
     padding: 1px;
 }
+
+.previous_next_articles {
+  text-align: center;
+}
