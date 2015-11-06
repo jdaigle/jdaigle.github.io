@@ -10,13 +10,13 @@
         {% for post in site.posts limit:site.rss-feed-limit %}
             <item>
                 <title>{{ post.title | xml_escape }}</title>
-                <dc:creator>{{ post.author.name | xml_escape }}</dc:creator>
+                <dc:creator>Joseph Daigle</dc:creator>
                 {% if site.rss-show-full == "yes" %}
                     <description>{{ post.content | xml_escape }}</description>
                 {% else %}
                     <description>{{ post.excerpt | strip_html | truncate: 250 }}</description>
                 {% endif %}
-                            <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
+                <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
                 <link>{{ site.url }}{{ post.url }}</link>
                 <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
             </item>

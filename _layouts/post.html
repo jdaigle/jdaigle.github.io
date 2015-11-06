@@ -7,13 +7,13 @@ layout: default
       {% if page.previous.url %} 
         <a href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}" style="float:left;">&laquo; {{page.previous.title}}</a> 
       {% endif %}
-      <a href="{{ site.url }}/">Recent Articles</a>
+      <a href="/">Recent Articles</a>
       {% if page.next.url %} 
         <a href="{{page.next.url}}" title="Next Post: {{page.next.title}}" style="float:right;">{{page.next.title}} &raquo;</a> 
       {% endif %} 
     </div>
     <div style="clear:both; height: 0; margin: 0; padding: 0;"></div>
     <h2>{{ page.title }}{{ .shortUrl }}</h2>
-    <span class="date">{{ page.date | date: "%B %e, %Y"  }}</span>
+    <span class="date">First published on {{ page.date | date: "%B %e, %Y"  }}</span>
     {{ content }}
 </article>

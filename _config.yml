@@ -1,6 +1,7 @@
 # General
-name: ""
+name: "Code Outside of the Box"
 paginate: 5
+url: http://josephdaigle.me
 
 markdown: redcarpet
 highlighter: pygments
