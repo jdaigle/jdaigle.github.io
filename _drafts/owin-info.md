@@ -1,28 +1,58 @@
-OWIN
+---
+title: OWIN, Can Someone Explain This to Me?
+layout: post
+---
 
-History
-- System.Web.dll (aka ASP.NET)
-- Primarily WebForms
-- Monolithic framework
-- Heavily dependent on IIS
--- IIS isn't a problem per-se
--- It's just that System.Web is "slow" and monolithic
+Recently I started diving into [SignalR](http://signalr.net/) which quickly led me down the rabbit-whole of learning about OWIN. I've been developing ASP.NET applications for over a decade and I figured I had a firm grasp the concepts. But in the last few years Microsoft has really been disturbing the status quo with new frameworks and patterns.
 
-Open Web Interface for .NET (OWIN)
-- It's just a spec. for building a web server.
-- How the server exposes a request to code.
-- These modules are called "middleware".
-- Heavily abstracted from the host/server.
+And [OWIN](http://owin.org/) is the perfect place to start exploring.
 
-The Spec:
-- exposes an "Environment" which is the current HTTP request. Provided to code.
--- modeled as an IDictionary<string,object>
--- strings are keys to lookup something about the request/response
--- the spec defines what should be returned for each string
-- AppFunc, plugin, how code is run in this environment
--- The "middleware" must expose a funct to call: Func<IDictionary<string,object>, Task>
--- Async by design
--- And that's pretty much it!
+### First a bit of history
+
+**ASP.NET** has been around since the beginning of the .NET framework, around 2002. It's the successor to Microsoft's ASP framework for server-side scripting. Beginning primarily has WebForms (ASPX pages), it has really matured over the past thirteen years.
+
+If you've ever built something that references **System.Web.dll**, you're using ASP.NET.
+
+But it's a huge **monolithic framework**. And it's heavily dependent on IIS and Windows to host an application. IIS itself isn't really a problem; it's arguably one of the best web servers available. Certainly the best available for Windows. The problem is that ASP.NET brings with it **a lot of baggage that's incredibly difficult to decouple**.
+
+For example, if you're building a modern web application you're probably not using session state. Yet that module is loaded and runs with every request. The original authentication module, will still useful in some cases, is very outdated. The error handling module is... terrible (note to self, write about modern ASP.NET error handling).
+
+<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">Overheard &quot;IIS is the fastest web server, as long as you don&#39;t load System.Web&quot; <a href="https://twitter.com/hashtag/ndclondon?src=hash">#ndclondon</a></p>&mdash; Arjan Einbu (@aeinbu) <a href="https://twitter.com/aeinbu/status/407816285058514944">December 3, 2013</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+### Enter OWIN
+
+Here is a pretty neat history of how OWIN came about: [http://www.slideshare.net/panesofglass/a-brief-history-of-owin](http://www.slideshare.net/panesofglass/a-brief-history-of-owin).
+
+[OWIN](http://owin.org/) stands for **Open Web Interface for .NET**. It is simply a specification for how a server should expose an HTTP request/response to a software module. The specification allows high level of abstraction from the actually HTTP host and server.
+
+The [specification](http://owin.org/html/spec/owin-1.0.html) itself is rather concise. Here's the 10,000 foot view:
+
+* A **Server** implements HTTP, running in some **Host** process, and exposes an "Environment" for the web application.
+* An **environment** is modeled as just an `IDictionary<string, object>`. Strings are keys which look up something about the request execution. I.E. parts of the request or the response.
+* The specification defines many of these keys and what type of object should be returned.
+* Software components are built as **Middleware** which are registered with the server. Multiple Middleware components can be strung together to build a pipeline. 
+* The **AppFunc** delegate is the primary interface in OWIN. Each Middleware component must implement a method that matches this delegate: `Func<IDictionary<string, object>, Task>`. It's a function that accepts the "environment" dictionary as a parameter, and *returns a Task*. This means that **OWIN is inherently async**!
+
+And that's pretty much it.
+
+### Break out the Katana 刀
+
+No not [刀](https://en.wikipedia.org/wiki/Katana), the Japanese samurai sword. 
+
+**[Katana](http://katanaproject.codeplex.com/)** is Microsoft's official implementation of OWIN. It's an open source project on codeplex made of up several components.
+
+Many of these components provide convenience classes that expose an API similar to ASP.NET. Such as an *OwinContext*, *OwinRequest*, *OwinResponse*, etc.
+
+Katana also delivers, presently, two different ways to host an OWIN application.
+
+1. You can easily **self-host** an HTTP server that runs OWIN middleware. It's kind of just a wrapper around **System.Net.HttpListener** (i.e. http.sys) that implements the OWIN spec. This allows you to host an OWIN based application where you may not have access to IIS, or if you wanted to embed it in another application or service.
+
+2. It can run side-by-side with ASP.NET using **Microsoft.Owin.Host.SystemWeb**. Technically it's adding OWIN as an ASP.NET module, so you're still getting all of that baggage. But, in addition to hosting in IIS, it allows you mix OWIN middleware components with existing ASP.NET components and frameworks such as ASP.NET MVC.
+
+There is a third way to host an OWIN application. You can actually host OWIN in IIS *without* System.Web using a project named [Helios](https://www.nuget.org/packages/Microsoft.Owin.Host.IIS/). This is an experimental implementation that is technically **not supported**. And unfortunately I haven't been able to find any recent information about it, so I think it's effectively abandoned. But one should also look to ASP.NET vNext for what comes next.  
+
+Now it seems that Katana is basically *done* in the sense that there have no new releases or even 
 
 Katana
 - MS implementation of OWIN spec
