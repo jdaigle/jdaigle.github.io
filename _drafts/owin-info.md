@@ -50,9 +50,24 @@ Katana also delivers, presently, two different ways to host an OWIN application.
 
 2. It can run side-by-side with ASP.NET using **Microsoft.Owin.Host.SystemWeb**. Technically it's adding OWIN as an ASP.NET module, so you're still getting all of that baggage. But, in addition to hosting in IIS, it allows you mix OWIN middleware components with existing ASP.NET components and frameworks such as ASP.NET MVC.
 
-There is a third way to host an OWIN application. You can actually host OWIN in IIS *without* System.Web using a project named [Helios](https://www.nuget.org/packages/Microsoft.Owin.Host.IIS/). This is an experimental implementation that is technically **not supported**. And unfortunately I haven't been able to find any recent information about it, so I think it's effectively abandoned. But one should also look to ASP.NET vNext for what comes next.  
+There is a third way to host an OWIN application. You can actually host OWIN in IIS *without* System.Web using a project named [Helios](https://www.nuget.org/packages/Microsoft.Owin.Host.IIS/). This is an experimental implementation that is technically **not supported**. And it's *not open source* from what I can tell. It essentially does a bunch of Interop magic to launch the code in IIS without ASP.NET.
 
-Now it seems that Katana is basically *done* in the sense that there have no new releases or even 
+Developing an OWIN application or middleware component is actually relatively straight forward too.
+
+For an application:
+
+1. Start with a "startup" class which a method that matches this name and signature: `public void Configuration(IAppBuilder app)`. Katana's hosting libraries use conventions to find this method and call it.
+2. Using IAppBuilder, register middleware components.
+
+There are various extensions methods on IAppBuilder which register middleware components.
+
+* You can call `Run()` and pass in a `Func<IOwinContext, Task>`. Notice that this is similar to the **AppFunc** delegate in the spec. But for convenience the "environment" is now a strongly typed interface.
+* You can call `Use()` and pass in a `Func<IOwinContext, Func<Task>, Task>`. This is similar, gives you *the next task* in the pipeline to execute. This enables you inject logic around subsequent middleware.
+* Middleware can also be implemented as a "module". There simply needs to be a class which implements a specific convention based on the core API.
+
+Middleware can also be registered to specific paths. This enables interesting scenarios such as branched pipelines; where for a particular path a different set of
+
+Now, it seems that Katana in it's current form is basically "done". The next version will officially be part of **ASP.NET vNext** which is currently still being developed. **It is known that there will be breaking API changes between the current release and ASP.NET vNext**. But, more importantly, the general programming model and patterns will remain relatively unchanged. The good news is that it should not take a lot of effort to port existing OWIN applications and middleware to vNext.
 
 Katana
 - MS implementation of OWIN spec
