@@ -32,6 +32,8 @@ p code {
     text-align: center;
 }
 
+article .small,
+.comments .small,
 footer .small {
     font-size: .8em;
 }
