@@ -5,7 +5,7 @@ layout: post
 
 This blog is [open source](https://github.com/jdaigle/jdaigle.github.io) and is built using [Jekyll](http://jekyllrb.com/), a [static website generator](https://staticsitegenerators.net/). One of the interesting side effects of hosting a completely *static* website is that I don't have a *dynamic* backend that I can use for comments. Comments, at a minimum, require a) a database b) a form to post comments and c) a dynamically generated view.
 
-In this world static websites a new category of SaaS as sprung up around "blog hosting services". By far the most popular service is [Disqus](https://disqus.com/), but there are others such as [Discourse](https://www.discourse.org/).
+In the world of static websites, a new category of SaaS as sprung up around "blog hosting services". By far the most popular service is [Disqus](https://disqus.com/), but there are others such as [Discourse](https://www.discourse.org/).
 
 Rather than simply pull in one of these services, I decided to try building my own! I decided to base my design on Disqus. Except my service won't serve ads, does not require creating an account, and won't track you.
 
