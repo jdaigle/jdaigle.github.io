@@ -7,5 +7,5 @@ markdown: redcarpet
 highlighter: pygments
 
 # RSS feed
-rss-feed-limit: 10
-rss-show-full: "no"
+rss-feed-limit: 100
+rss-show-full: "yes"
