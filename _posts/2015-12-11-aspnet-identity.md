@@ -1,5 +1,5 @@
 ---
-title: ASP.NET Identity: A Case Study in Monolithic Frameworks  
+title: ASP.NET Identity - A Case Study in Monolithic Frameworks  
 layout: post
 ---
 
