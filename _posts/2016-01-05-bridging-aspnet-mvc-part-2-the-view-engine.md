@@ -27,21 +27,26 @@ Not only does it select the view based on the view model's class and namespace, 
 
 And then on startup, insert the new view engine:
 
-    ViewEngines.Engines.Insert(0, new ViewModelSpecifiedViewEngine());
+    ViewEngines.Engines.Insert(0,
+        new ViewModelSpecifiedViewEngine());
 
 In your controller actions, simply construct the view model and return the view result.
 
     public ActionResult ListSomeResource() {
-         var viewModel = new SomeResourceListViewModel();
+         var viewModel
+             = new SomeResourceListViewModel();
          ...
          return View(viewModel);
     }
 
 This works well for partial view results too. However there is a hiccup: the use of the `Partial()` HTML helper is sort of broken by since it does not have an override that only accepts a view model object. It *requires a partial view name*... how annoying. But easy enough to work around with this new view engine; the view name can be any string with length > 0. So I simply create an extension method to make it easier:
 
-    public static MvcHtmlString PartialView(this HtmlHelper htmlHelper, object model)
+    public static MvcHtmlString PartialView(
+        this HtmlHelper htmlHelper,
+        object model)
     {
-        // minor hack, since all the internals of finding a partial view require a partialViewName
+        // minor hack, since all the internals of
+        // finding a partial view require a partialViewName
         return htmlHelper.Partial("null", model);
     }
 
