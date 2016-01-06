@@ -9,7 +9,7 @@ This is **part 2** of a multi-part series on "fixing" some of the inherit design
 - [Part 1 - Introduction]({% post_url 2016-01-05-bridging-aspnet-mvc-part-1 %})
 - [Part 2 - The View Engine]({% post_url 2016-01-05-bridging-aspnet-mvc-part-2-the-view-engine %})
 - Part 3 - View Model Conventions
-- Part 4 - Routing and URL generation
+- Part 4 - Routing and URL Generation
 - Part 5 - The Controller Factory
 - Part 6 - ActionResults and Content Negotiation
 
