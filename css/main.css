@@ -28,6 +28,15 @@ p code {
     text-align: center;
 }
 
+    .previous_next_articles a {
+        width: 45%;
+        white-space: nowrap;
+        overflow: hidden;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+    }
+
 .center {
     text-align: center;
 }
