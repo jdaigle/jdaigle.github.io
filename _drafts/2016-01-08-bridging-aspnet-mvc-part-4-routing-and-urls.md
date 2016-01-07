@@ -1,14 +1,13 @@
 ---
 title: Bridging ASP.NET MVC - Routing and URL Generation
 layout: post
-date: 2016-01-07 12:00
 ---
 
 This is **part 4** of a multi-part series on "fixing" some of the inherit design problems with ASP.NET MVC.
 
 - [Part 1 - Introduction]({% post_url 2016-01-05-bridging-aspnet-mvc-part-1 %})
 - [Part 2 - The View Engine]({% post_url 2016-01-05-bridging-aspnet-mvc-part-2-the-view-engine %})
-- Part 3 - View Model Conventions
+- [Part 3 - View Model Conventions]({% post_url 2016-01-07-bridging-aspnet-mvc-part-3-view-model-conventions %})
 - [Part 4 - Routing and URL Generation](2016-01-07-bridging-aspnet-mvc-part-4-routing-and-urls)
 - Part 5 - The Controller Factory
 - Part 6 - ActionResults and Content Negotiation
