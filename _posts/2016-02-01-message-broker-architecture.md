@@ -3,7 +3,7 @@ title: High Performance Message Broker Design
 layout: post
 ---
 
-In my [previous post]({% post_url 2016-01-25-introducing-lightrail %}) I talked beginning research into designing and implementing an AMQP-based message broker.
+In my [previous post]({% post_url 2016-01-25-introducing-lightrail %}) I talked of beginning research into designing and implementing an AMQP-based message broker.
 
 Implementing the network layer and AMQP protocol is relatively easy. But the actual message broker implementation (queuing, dispatch, and persistence) is an interesting problem.
 
