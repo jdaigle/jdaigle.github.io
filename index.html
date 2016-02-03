@@ -8,6 +8,7 @@ layout: default
 </p>
 
 <div>
+  <span style="float: right;"><a href="all.html">View All Articles</a></span>
   <h2>Recent Articles</h2>
   {% for post in paginator.posts %}
       <article>
@@ -28,4 +29,8 @@ layout: default
     {% if paginator.next_page %}
         <a href="{{ paginator.next_page_path }}" class="next">Next</a>
     {% endif %}
+</div>
+
+<div>
+    <a href="all.html">View All Articles</a>
 </div>

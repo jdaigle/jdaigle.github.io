@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<h1 class="center"><a href="/">{{ site.name }}</a></h1>
+<p class="center">
+    <i>Conventionally unconventional.</i>
+</p>
+
+<div>
+  <h2>All Articles</h2>
+
+{% for post in site.posts %}
+  {% assign currentdate = post.date | date: "%Y" %}
+  {% if currentdate != date %}
+    {% unless forloop.first %}</ul>{% endunless %}
+    <h3 id="y{{post.date | date: "%Y"}}">{{ currentdate }}</h3>
+    <ul>
+        {% assign date = currentdate %}
+  {% endif %}
+        {% assign wordCount = post.content | number_of_words %}
+        <li><span class="date">{{ post.date | date: "%Y-%m-%d"  }}</span>: <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> ({{wordCount}} words)</li>
+  {% if forloop.last %}
+    </ul>
+  {% endif %}
+{% endfor %}
+
+</div>
