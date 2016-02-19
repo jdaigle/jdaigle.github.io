@@ -78,7 +78,7 @@ I prefer to avoid areas.
 
 Unfortunately *Feature Folders* won't necessarily work out-of-the-box. There are a few things we need to tweak.
 
-First, as a mentioned in [a previous post]({% post_url 2016-01-13-bridging-aspnet-mvc-part-4-routing-and-urls %}), assigning routes to individual actions is important.
+First, as a mentioned in [a previous article]({% post_url 2016-01-13-bridging-aspnet-mvc-part-4-routing-and-urls %}), assigning routes to individual actions is important.
 
 Second, the default view engine only knows to look for *views* inside of `Views\`. But we can subclass the default engine using [the technique I wrote about here]({% post_url 2016-01-05-bridging-aspnet-mvc-part-2-the-view-engine %}) to make it work.
 
