@@ -1,5 +1,5 @@
 ---
-title: Bridging ASP.NET MVC - Part 4 - Routing and URL Generation
+title: Aftermarket ASP.NET MVC - Part 4 - Routing and URL Generation
 layout: post
 date: 2016-01-13
 ---
@@ -10,8 +10,10 @@ This is **part 4** of a multi-part series on "fixing" some of the inherit design
 - [Part 2 - The View Engine]({% post_url 2016-01-05-bridging-aspnet-mvc-part-2-the-view-engine %})
 - [Part 3 - View Model Conventions]({% post_url 2016-01-07-bridging-aspnet-mvc-part-3-view-model-conventions %})
 - [Part 4 - Routing and URL Generation]({% post_url 2016-01-13-bridging-aspnet-mvc-part-4-routing-and-urls %})
-- Part 5 - The Controller Factory
+- [Part 5 - Feature Folders]({% post_url 2016-02-19-aftermarket-aspnet-mvc-part-5-feature-folders %})
 - Part 6 - ActionResults and Content Negotiation
+
+Update 2016-02-18: I've also setup a [repository on GitHub](https://github.com/jdaigle/aspnetmvc5demo) that includes many of these experiments and implementations.
 
 A common theme of this series is derived from the following quote I once read (but can no longer attribute):
 

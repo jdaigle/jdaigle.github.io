@@ -1,5 +1,5 @@
 ---
-title: Bridging ASP.NET MVC - Part 1 - Introduction
+title: Aftermarket ASP.NET MVC - Part 1 - Introduction
 layout: post
 date: 2016-01-05 08:00
 ---
@@ -10,8 +10,10 @@ This is **part 1** of a multi-part series on "fixing" some of the inherit design
 - [Part 2 - The View Engine]({% post_url 2016-01-05-bridging-aspnet-mvc-part-2-the-view-engine %})
 - [Part 3 - View Model Conventions]({% post_url 2016-01-07-bridging-aspnet-mvc-part-3-view-model-conventions %})
 - [Part 4 - Routing and URL Generation]({% post_url 2016-01-13-bridging-aspnet-mvc-part-4-routing-and-urls %})
-- Part 5 - The Controller Factory
+- [Part 5 - Feature Folders]({% post_url 2016-02-19-aftermarket-aspnet-mvc-part-5-feature-folders %})
 - Part 6 - ActionResults and Content Negotiation
+
+Update 2016-02-18: I've also setup a [repository on GitHub](https://github.com/jdaigle/aspnetmvc5demo) that includes many of these experiments and implementations.
 
 **ASP.NET MVC** has been the contemporary framework of choice for backend web development on the .NET stack almost since its first release around 2008-2009. And now here we are, seven years later, and by-and-large the framework's programming patterns have remained relatively unchanged.
 

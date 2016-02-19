@@ -1,5 +1,5 @@
 ---
-title: Bridging ASP.NET MVC - Part 2 - The View Engine
+title: Aftermarket ASP.NET MVC - Part 2 - The View Engine
 layout: post
 date: 2016-01-05 09:00
 ---
@@ -10,8 +10,10 @@ This is **part 2** of a multi-part series on "fixing" some of the inherit design
 - [Part 2 - The View Engine]({% post_url 2016-01-05-bridging-aspnet-mvc-part-2-the-view-engine %})
 - [Part 3 - View Model Conventions]({% post_url 2016-01-07-bridging-aspnet-mvc-part-3-view-model-conventions %})
 - [Part 4 - Routing and URL Generation]({% post_url 2016-01-13-bridging-aspnet-mvc-part-4-routing-and-urls %})
-- Part 5 - The Controller Factory
+- [Part 5 - Feature Folders]({% post_url 2016-02-19-aftermarket-aspnet-mvc-part-5-feature-folders %})
 - Part 6 - ActionResults and Content Negotiation
+
+Update 2016-02-18: I've also setup a [repository on GitHub](https://github.com/jdaigle/aspnetmvc5demo) that includes many of these experiments and implementations.
 
 The problem with the default view engine in ASP.NET MVC stems not from how it renders a view, but how it *selects and finds* a view to render. If you dig through the source code you'll discover that *selecting and finding* a view to render is tightly coupled with the actual view engine itself. That can be troublesome if we want to implement our own conventions.
 
