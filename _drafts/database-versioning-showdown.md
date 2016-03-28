@@ -29,12 +29,20 @@ They're usually written by hand to execute precise changes in a precise order. A
 
 Migrations are also efficient. Instead of comparing and generating a change script, we simply execute the migrations that haven't been run yet in the correct order. Often a special database table is used to maintain information about the migration scripts that have been executed.
 
-**Avoid code-based database migrations**.
+I *think* database migrations first become really popular as part of the ActiveRecord implementation in Rails (i.e. Ruby on Rails) as far back as 2005-2006. You wrote "up" and "down" migrations in Ruby, and a tool that shipped with Rails would upgrade/downgrade the database accordingly. When building later versions Entity Framework, Microsoft adopted a similar pattern for database migrations as part of their "code-first" database strategy. In a future article I'll talk about why you don't need another domain specific language (DSL) on top of SQL DDL, and why it might actually be harmful.
 
 ### Why not both?
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">wanted: DB migrations for schema, DB projects for sprocs/functions</p>&mdash; Jimmy Bogard (@jbogard) <a href="https://twitter.com/jbogard/status/710188482279288832">March 16, 2016</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+Clearly migrations are better suited for schema changes in which data preservation is critical. They naturally map to the how a DBA or developer may make changes: a set of iterative commands performed step-by-step.
+
+However some database objects, such as stored procedures, views, and functions, *can* exist independent of the underlying schema. They're also not really tied to data per se. Instead they're more of an abstraction over the relational model. Stored procedures and functions, in particular, are almost "code" by their nature. As such it does make more sense to treat these like classes that are modified over time.
+
+Ideally we have a tool that mixes both migrations and model/desired state. Fortunately a number of tools exist. I wrote such a tool almost seven years ago (!!) which I know call [Horton (https://github.com/jdaigle/Horton)](https://github.com/jdaigle/Horton). While researching for this article I stumbled across several other .NET based tools. One in particular that stoop out is [RoundHousE (https://github.com/chucknorris/roundhouse)](https://github.com/chucknorris/roundhouse). It's *not quite as old as Horton*, but it's been around long enough and clearly has a well defined community.
+
+I suggest checking these out and figuring out how they might work in your continuous deployment strategy.
 
 
 ### Further Reading
