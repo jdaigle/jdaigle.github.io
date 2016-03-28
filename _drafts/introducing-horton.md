@@ -7,8 +7,7 @@ layout: post
 
 ### What is Horton?
 
-Horton is the simple database migration utility. It's a little program that does one thing: enables versioning of database
-schema through SQL based migration scripts.
+Horton is the simple database migration utility. It's a little program that does one thing: enables versioning of database schema through SQL based migration scripts.
 
 ### How do I get started?
 
