@@ -3,6 +3,8 @@ title: Searching for the Ultimate Development Laptop
 layout: post
 ---
 
+Update #1: [I've written another short article]({% post_url 2016-04-12-all-about-the-pentiums %}) (dated 2016-04-12) comparing the latest models, focusing on the processor specs. But I'm still waiting for the MacBook Pro refresh.
+
 Some say it's a futile quest. But I'm going to try anyway. I'm going to find (or at least pick) the perfect laptop for software development.
 
 I'm currently writing this article from a 2013-era Lenovo ThinkPad W530. And it is a beast. It's actually quite a performant laptop with a decent keyboard and screen. But it's big and it's heavy. Even the latest W-series models are just too big. I put this laptop in the class of "desktop-replacement" instead of "portable" - it's not one I would choose for myself or, frankly, recommend.
