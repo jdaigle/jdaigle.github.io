@@ -16,7 +16,7 @@ This directly leads to the other fundamental problem; auto-generated migrations 
 
 There a lot of other problems with EF migrations in general (such as poor tooling, lack of idempotency, and the requirement to implement "Down" migrations), but that's content for another article.
 
-h3. Scaffolding Migrations with Horton
+### Scaffolding Migrations with Horton
 
 Historically I've frowned upon scaffolding migrations. Despite this, I still often find myself copying/pasting existing migrations and changing names and identifiers - it's so much easier to start from something rather than nothing. Also, teams that use EF "code-first" migrations are accustomed to *always* scaffolding (in fact, there is no other way to add a migration).
 
