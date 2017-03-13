@@ -13,13 +13,13 @@ Despite this, there are a number of use cases that are simply not supported maki
 * Asynchronous action results (such as rendering Razor views)
 * Asynchronous child actions (resulting from lack of async action results)
 
-Granted these problems and more are solved in [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/). But a lot of world runs on mix of legacy code, such as web forms and old ASP.NET web services. It would have been nice to have some of these features back ported to the ASP.NET MVC 5.x trunk.
+Granted these problems and more are solved in [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/). But a lot of world runs on a mix of legacy code, including web forms and old ASP.NET web services. It would have been nice to have some of these features back ported to the ASP.NET MVC 5.x trunk.
 
-**And so I am attempting to just that.** I'm also planning to document the process. Whether or not these changes ever make it into an "official" release, I think this is worth-while exercise and hopefully someone finds it useful.
+**And so I am attempting to just that.** I'm also planning to document the process. Whether or not these changes ever make it into an "official" release, I think this is a worth-while exercise that hopefully someone finds useful.
 
 ## The ASP.NET MVC Async Pipeline
 
-Supporting asynchronous action filters is right at the top of my list. All of the code today used to invoke action filters lives in `AsyncControllerActionInvoker`, so I figured it wouldn't be *too hard*. Unfortunately that's where I quickly discovered that MVC wasn't built around async/await, but rather the classic APM.
+Supporting asynchronous action filters is right at the top of my list. All of the code today used to invoke action filters lives in `AsyncControllerActionInvoker`, so I figured it wouldn't be *too hard*. Unfortunately that's where discovered that the MVC pipeline isn't built around async/await, but rather classic APM.
 
 Let's look at how the pipeline is layered today:
 
@@ -55,6 +55,8 @@ I want to rewrite `AsyncControllerActionInvoker` so that its internal logic is b
 ## Getting Started
 
 The source code today is still hosted on [https://aspnetwebstack.codeplex.com/](CodePlex). I decided to fork the repository and push my work to a branch on GitHub: [https://github.com/jdaigle/aspnetwebstack/tree/async-pipeline-cleanup](https://github.com/jdaigle/aspnetwebstack/tree/async-pipeline-cleanup).
+
+I'm not sure yet if I should modifying the code in `System.Web.Mvc` and recompile, or if I should try implementing the stack in an separate assembly and replace at runtime (introducing breaking changes will obviously have an effect on that).
 
 Next time I hope to have a working build of the revised async pipeline (with all existing unit tests passing). And then I'll take on designing an API for the async filters.
 
