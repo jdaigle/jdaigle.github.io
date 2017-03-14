@@ -3,9 +3,12 @@ title: 'Improving Async Support in ASP.NET MVC - Part 1'
 layout: post
 ---
 
+- [Part 1 - The Current Landscape]({% post_url 2017-03-12-improved-async-aspnet-mvc-part-1 %})
+- [Part 2 - Refactoring AsyncControllerActionInvoker]({% post_url 2017-03-13-improved-async-aspnet-mvc-part-2 %})
+
 ## The Current Landscape
 
-ASP.NET MVC ([the non-core version](https://www.nuget.org/packages/microsoft.aspnet.mvc/)) has enjoyed decent support for asynchronous actions. The older Asynchronous Programming Model (APM) approach required inheriting from `AsyncController` and involved creating `ActionAsync()` and `ActionCompleted()` method pairs. The newer Task Parallel Library (TPL), or async/await, approach simplified development significantly by allowing action methods on normal controllers to return `Task<ActionResult>`. On the one hand, the implementation of async inside ASP.NET MVC has been kludgey at best. On the other hand, Microsoft did a good job of tying in async support without any major breaking changes.
+ASP.NET MVC ([the non-core version](https://www.nuget.org/packages/microsoft.aspnet.mvc/)) has enjoyed decent support for asynchronous actions. The older Asynchronous Programming Model (APM) approach required inheriting from `AsyncController` and involved creating `ActionAsync()` and `ActionCompleted()` method pairs. The newer Task-based Asynchronous Pattern (TAP), or async/await, approach simplified development significantly by allowing action methods on normal controllers to return `Task<ActionResult>`. On the one hand, the implementation of async inside ASP.NET MVC has been kludgey at best. On the other hand, Microsoft did a good job of tying in async support without any major breaking changes.
  
 Despite this, there are a number of use cases that are simply not supported making it *really challenging* to create async-only business libraries.
 
