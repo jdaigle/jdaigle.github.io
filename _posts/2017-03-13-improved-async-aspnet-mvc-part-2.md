@@ -34,6 +34,8 @@ I was pleasantly surprised by the results. Performance is nearly the same, and s
           AsyncControllerActionInvokerEx_InvokeAction_NormalAction | 16.9045 us | 0.2451 us |
        AsyncControllerActionInvoker_BeginInvokeAction_NormalAction | 17.1643 us | 0.1946 us |
 
+Of course I'm assuming there would be an even greater improvement in performance if the entire pipeline could be refactored to use TAP. Unfortunately that would require a lot of changes, many of them breaking changes.
+
 ## Using `AsyncControllerActionInvokerEx` at Runtime
 
 Fortunately it's pretty easy to swap in a custom ActionInvoker at runtime. As a developer you have a few options:
@@ -41,3 +43,7 @@ Fortunately it's pretty easy to swap in a custom ActionInvoker at runtime. As a 
 * You can create an implementation of `IAsyncActionInvokerFactory` or `IActionInvokerFactory` and register with your DI container.
 * You can directly register an `IAsyncActionInvoker` or `IActionInvoker` with your DI container.
 * You can simply assign the `ActionInvoker` property on `Controller` in a constructor.
+
+## Next Time
+
+Next time I hope to start planning out the API for new async filters.
