@@ -5,6 +5,7 @@ layout: post
 
 - [Part 1 - The Current Landscape]({% post_url 2017-03-12-improved-async-aspnet-mvc-part-1 %})
 - [Part 2 - Refactoring AsyncControllerActionInvoker]({% post_url 2017-03-13-improved-async-aspnet-mvc-part-2 %})
+- [Part 3 - Async Filter API]({% post_url 2017-03-18-improved-async-aspnet-mvc-part-3 %})
 
 [Last time]({% post_url 2017-03-12-improved-async-aspnet-mvc-part-1 %}) I began by discussing several of the shortcomings of the current ASP.NET MVC async implementation. Specifically the lack of async filters (action filters, etc.).
 
