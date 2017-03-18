@@ -21,14 +21,16 @@ The obvious solution is to just copy the API from [ASP.NET MVC Core](https://git
 
     public interface IAsyncActionFilter : IActionFilter
     {
-        Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next);
+        Task OnActionExecutionAsync(ActionExecutingContext context
+            , ActionExecutionDelegate next);
     }
 
     public delegate Task<ActionExecutedContext> ActionExecutionDelegate();
 
     public interface IAsyncResultFilter : IResultFilter
     {
-        Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next);
+        Task OnResultExecutionAsync(ResultExecutingContext context
+            , ResultExecutionDelegate next);
     }
 
     public delegate Task<ResultExecutedContext> ResultExecutionDelegate();
@@ -39,7 +41,9 @@ But you'll notice that these async interfaces must also implement their non-asyn
 
 Here's an example implementation based on `FilterAttribute`:
 
-    public class AsyncActionFilterAttribute : FilterAttribute, IAsyncActionFilter, IAsyncResultFilter {
+    public class AsyncActionFilterAttribute : FilterAttribute
+        , IAsyncActionFilter
+        , IAsyncResultFilter {
 
         public virtual void OnActionExecuting(ActionExecutingContext filterContext) {
         }
@@ -47,7 +51,8 @@ Here's an example implementation based on `FilterAttribute`:
         public virtual void OnActionExecuted(ActionExecutedContext filterContext) {
         }
 
-        public virtual async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next) {
+        public virtual async Task OnActionExecutionAsync(ActionExecutingContext context
+            , ActionExecutionDelegate next) {
             OnActionExecuting(context);
             if (context.Result == null) {
                 OnActionExecuted(await next().ConfigureAwait(false));
@@ -60,7 +65,8 @@ Here's an example implementation based on `FilterAttribute`:
         public virtual void OnResultExecuted(ResultExecutedContext filterContext) {
         }
 
-        public virtual async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next) {
+        public virtual async Task OnResultExecutionAsync(ResultExecutingContext context
+            , ResultExecutionDelegate next) {
             OnResultExecuting(context);
             if (!context.Cancel) {
                 OnResultExecuted(await next().ConfigureAwait(false));
