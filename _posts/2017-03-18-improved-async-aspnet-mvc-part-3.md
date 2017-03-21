@@ -29,8 +29,7 @@ The obvious solution is to just copy the API from [ASP.NET MVC Core](https://git
 
     public interface IAsyncResultFilter : IResultFilter
     {
-        Task OnResultExecutionAsync(ResultExecutingContext context
-            , ResultExecutionDelegate next);
+        Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next);
     }
 
     public delegate Task<ResultExecutedContext> ResultExecutionDelegate();
@@ -51,8 +50,7 @@ Here's an example implementation based on `FilterAttribute`:
         public virtual void OnActionExecuted(ActionExecutedContext filterContext) {
         }
 
-        public virtual async Task OnActionExecutionAsync(ActionExecutingContext context
-            , ActionExecutionDelegate next) {
+        public virtual async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next) {
             OnActionExecuting(context);
             if (context.Result == null) {
                 OnActionExecuted(await next().ConfigureAwait(false));
@@ -65,8 +63,7 @@ Here's an example implementation based on `FilterAttribute`:
         public virtual void OnResultExecuted(ResultExecutedContext filterContext) {
         }
 
-        public virtual async Task OnResultExecutionAsync(ResultExecutingContext context
-            , ResultExecutionDelegate next) {
+        public virtual async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next) {
             OnResultExecuting(context);
             if (!context.Cancel) {
                 OnResultExecuted(await next().ConfigureAwait(false));

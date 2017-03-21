@@ -16,6 +16,7 @@ pre {
     padding: 5px;
     border: 1px solid #aaa;
     font-size: 14px;
+    overflow-x: auto;
 }
 
 p code {
