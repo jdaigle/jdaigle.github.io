@@ -19,7 +19,7 @@ pre {
     overflow-x: auto;
 }
 
-p code {
+p code, li code {
     background-color: #eee;
     font-size: 14px;
     padding: 1px;
