@@ -71,3 +71,7 @@ But in the meantime if anyone has any comments or feedback please feel free to l
 It seems that Microsoft is, in fact, [working on a 5.2.4 release](https://twitter.com/DamianEdwards/status/839506865830535169). And there will be a new home for AspNetWebStack on [GitHub](https://github.com/aspnet/aspnetwebstack) eventually. In fact, you can find the nightlys of 5.2.4 on [MyGet](https://www.myget.org/gallery/aspnetwebstacknightly/). So *maybe* I could get some of my changes and ideas accepted once development is open again.
 
 Honestly I'm not sure why Microsoft isn't doing 5.2.4 in the open already - it's a bit disheartening.
+
+### Update 2017-05-07
+
+The [AspNetWebStack](https://github.com/aspnet/aspnetwebstack) repository is finally open.
